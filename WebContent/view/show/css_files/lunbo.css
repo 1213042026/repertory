@@ -1,0 +1,14 @@
+*{padding:0;margin:0;}
+img{border:0}
+ol,ul{list-style:none}
+#lunbo{ float:left;position:relative}
+.flash_img {float: left; overflow: hidden;}
+.flash_img img {display:block}
+.flash_img li{ position:absolute;}
+
+.flash_item {z-index:2;display: block; position:absolute; overflow:hidden;}
+.flash_item li {display: inline-block; float: left;position:relative;margin-left:5px;background: none no-repeat scroll 0 0 #F7F7F7;border: 1px solid #9C9E9F;cursor:pointer}
+
+.flash_img li.smask {z-index: -1}
+
+#flow {position:absolute;cursor:pointer;background: none no-repeat scroll 0 0 #9C9E9F;z-index:3}
