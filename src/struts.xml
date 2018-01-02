@@ -4,35 +4,22 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="kucunManage" namespace="/kucunManage" extends="struts-default">
-	    <action name="goindex" class="com.zhuxiaoxuan.action.IndexAction">
-	        <result name="index">/view/indexTemp.jsp</result>
-	    </action>
-        <action name="login" class="com.zhuxiaoxuan.action.UserAction">
+        <action name="login" class="com.ms.action.UserAction" method="isLogin">
 			<result name="error">/login.jsp</result>
 			<result name="success" type="redirect">/main.jsp</result>
 		</action>
-		<action name="customer" class="com.zhuxiaoxuan.action.CustomerAction">
+		<action name="customer" class="com.ms.action.CustomerAction">
 		</action>
-		<action name="mail" class="com.zhuxiaoxuan.action.MailAction">
+		<action name="mail" class="com.ms.action.MailAction">
 		    <result name="searchMail">/view/indexTemp.jsp</result>
 		</action>
-		<action name="mailtype" class="com.zhuxiaoxuan.action.MailTypeAction">
+		<action name="mailtype" class="com.ms.action.MailTypeAction">
 		</action>
-		<action name="indb" class="com.zhuxiaoxuan.action.IndbAction">
+		<action name="indb" class="com.ms.action.IndbAction">
 		</action>
-		<action name="outdb" class="com.zhuxiaoxuan.action.OutdbAction">
+		<action name="outdb" class="com.ms.action.OutdbAction">
 		</action>
-		<action name="stock" class="com.zhuxiaoxuan.action.StockAction">
+		<action name="stock" class="com.ms.action.StockAction">
 		</action>
     </package>
-    <package name="kucunManage2" namespace="/kucunManage2" extends="jfreechart-default">
-	    <action name="barChart" class="com.zhuxiaoxuan.action.BarChartAction">
-	       <result name="success" type="chart">
-			   <param name="value">chart</param>
-			   <param name="type">png</param>
-			   <param name="width">700</param>
-			   <param name="height">500</param>
-			</result>
-	    </action>
-	</package>
 </struts>

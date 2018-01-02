@@ -1,8 +1,9 @@
 /*
 SQLyog 企业版 - MySQL GUI v8.14 
-MySQL - 5.1.51-community : Database - db_kucun
+MySQL - 5.1.51-community : Database - db_repertory
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -12,24 +13,44 @@ MySQL - 5.1.51-community : Database - db_kucun
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_kucun` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_repertory` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE `db_kucun`;
+USE `db_repertory`;
 
-/*Table structure for table `t_admin` */
+/*Table structure for table `t_employee` */
 
-DROP TABLE IF EXISTS `t_admin`;
+DROP TABLE IF EXISTS `t_employ`;
 
-CREATE TABLE `t_admin` (
+CREATE TABLE `t_employee` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
+  `number` varchar(200) DEFAULT NULL unique,
+  `rolenumber` varchar(200) DEFAULT NULL unique,
   `username` varchar(20) DEFAULT NULL,
   `userpwd` varchar(20) DEFAULT NULL,
+  `joindate` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-/*Data for the table `t_admin` */
+/*Data for the table `t_employee` */
 
-insert  into `t_admin`(`id`,`username`,`userpwd`) values (1,'admin','admin');
+insert  into `t_employee`(`number`, `rolenumber`, `username`,`userpwd`, `joindate`) values ("E001",'R001','tom', '123', '2012-08-31 09:00:00');
+
+DROP TABLE IF EXISTS `t_role`;
+
+CREATE TABLE `t_role` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `number` varchar(200) DEFAULT NULL unique,
+  `name` varchar(200) DEFAULT NULL unique,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_role` */
+
+insert  into `t_role`(`number`, `name`) values ("R001",'仓库主管');
+insert  into `t_role`(`number`, `name`) values ("R002",'原材料仓库管理员');
+insert  into `t_role`(`number`, `name`) values ("R003",'成品仓库管理员');
+
+
 
 /*Table structure for table `t_customer` */
 
@@ -147,8 +168,3 @@ CREATE TABLE `t_stock` (
 /*Data for the table `t_stock` */
 
 insert  into `t_stock`(`stockId`,`mailId`,`stockNumbers`,`salesPrice`,`inPrice`,`stockDesc`) values (1,3,5,500,100,'好好'),(2,1,60,500,100,'222'),(3,1,20,202,100,'打我试试'),(4,7,30,600,400,'有货啊'),(5,2,10,30,20,'000');
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
