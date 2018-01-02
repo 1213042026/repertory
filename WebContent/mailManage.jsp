@@ -32,7 +32,7 @@ function deleteMail(){
 	var ids=strIds.join(",");
 	$.messager.confirm("系统提示","您确认要删掉这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
 		if(r){
-			$.post("kucunManage/mail!delete",{delIds:ids},function(result){
+			$.post("repertory/mail!delete",{delIds:ids},function(result){
 				if(result.success){
 					$.messager.alert("系统提示","您已成功删除<font color=red>"+result.delNums+"</font>条数据！");
 					$("#dg").datagrid("reload");
@@ -45,7 +45,7 @@ function deleteMail(){
 }
 function openMailAddDialog(){
 	$("#dlg").dialog("open").dialog("setTitle","添加商品信息");
-	url="kucunManage/mail!save";
+	url="repertory/mail!save";
 }
 function saveMail(){
 	alert(url);
@@ -91,7 +91,7 @@ function openMailModifyDialog(){
 	//$("#dlg_mailtypeId").val(row.mailtypeName);
 	$("#dlg_customerId").combobox("setValue",row.customerId);
 	$("#dlg_mailtypeId").combobox("setValue",row.mailtypeId);
-	url="kucunManage/mail!save?mailId="+row.mailId;
+	url="repertory/mail!save?mailId="+row.mailId;
 }
 
 function closeMailDialog(){
@@ -119,7 +119,7 @@ function exportUser(){
 	var ids=strIds.join(",");
 	$.messager.confirm("系统提示","您确认要导出这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
 		if(r){
-			window.open('kucunManage/mail!export?exportIds='+ids);
+			window.open('repertory/mail!export?exportIds='+ids);
 		}
 	});
 }
@@ -149,7 +149,7 @@ function uploadFile(){
 </head>
 <body>
 <table class="easyui-datagrid" id="dg" title="商品信息管理" data-options="pagination:true,
-fitColumns:true,collapsible:true,rownumbers:true,fit:true,url:'kucunManage/mail'"toolbar="#tb">
+fitColumns:true,collapsible:true,rownumbers:true,fit:true,url:'repertory/mail'"toolbar="#tb">
 	<thead>
 		<tr>
 			<th data-options="field:'cb',checkbox:true"></th>
@@ -171,13 +171,13 @@ fitColumns:true,collapsible:true,rownumbers:true,fit:true,url:'kucunManage/mail'
 				<td >商品编码:</td>
 				<td><input type="text" name="mail.mailNumber" id="dlg_mailNumber" class="easyui-validatebox" required="true"/></td>
 				<td>供应商:</td>
-				<td><input class="easyui-combobox" id="dlg_customerId" name="mail.customerId" data-options="editable:false,valueField:'customerId',textField:'customerName',url:'kucunManage/customer!customerComboList'"/></td>
+				<td><input class="easyui-combobox" id="dlg_customerId" name="mail.customerId" data-options="editable:false,valueField:'customerId',textField:'customerName',url:'repertory/customer!customerComboList'"/></td>
 			</tr>
 			<tr>
 				<td>商品名称:</td>
 				<td><input type="text" name="mail.mailName" id="dlg_mailName" class="easyui-validatebox" required="true"/></td>
 				<td>商品类别:</td>
-				<td><input class="easyui-combobox" id="dlg_mailtypeId" name="mail.mailtypeId" data-options="editable:false,valueField:'mailtypeId',textField:'mailtypeName',url:'kucunManage/mailtype!mailtypeComboList'"/></td>
+				<td><input class="easyui-combobox" id="dlg_mailtypeId" name="mail.mailtypeId" data-options="editable:false,valueField:'mailtypeId',textField:'mailtypeName',url:'repertory/mailtype!mailtypeComboList'"/></td>
 			</tr>
 			<tr>
 				<td>商品描述:</td>
@@ -192,7 +192,7 @@ fitColumns:true,collapsible:true,rownumbers:true,fit:true,url:'kucunManage/mail'
 </div>
 <div id="dlg2" class="easyui-dialog" style="width:400px;height:180px;padding:10px 20px"
             closed="true" buttons="#dlg-buttons2">
-        <form id="uploadForm" action="kucunManage/mail!upload" method="post" enctype="multipart/form-data">
+        <form id="uploadForm" action="repertory/mail!upload" method="post" enctype="multipart/form-data">
         	<table>
         		<tr>
         			<td>下载模版：</td>

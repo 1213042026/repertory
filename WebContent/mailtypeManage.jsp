@@ -32,7 +32,7 @@ function deleteMailType(){
 	var ids=strIds.join(",");
 	$.messager.confirm("系统提示","您确认要删掉这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
 		if(r){
-			$.post("kucunManage/mailtype!delete",{delIds:ids},function(result){
+			$.post("repertory/mailtype!delete",{delIds:ids},function(result){
 				if(result.success){
 					$.messager.alert("系统提示","您已成功删除<font color=red>"+result.delNums+"</font>条数据！");
 					$("#dg").datagrid("reload");
@@ -45,7 +45,7 @@ function deleteMailType(){
 }
 function openMailTypeAddDialog(){
 	$("#dlg").dialog("open").dialog("setTitle","添加商品类别信息");
-	url="kucunManage/mailtype!save";
+	url="repertory/mailtype!save";
 }
 
 function openMailTypeModifyDialog(){
@@ -59,7 +59,7 @@ function openMailTypeModifyDialog(){
 	// $("#fm").form("load",row);
 	$("#dlg_mailtypeName").val(row.mailtypeName);
 	$("#dlg_mailtypeDesc").val(row.mailtypeDesc);
-	url="kucunManage/mailtype!save?mailtypeId="+row.mailtypeId;
+	url="repertory/mailtype!save?mailtypeId="+row.mailtypeId;
 }
 
 function closeMailTypeDialog(){
@@ -105,7 +105,7 @@ function exportUser(){
 	var ids=strIds.join(",");
 	$.messager.confirm("系统提示","您确认要导出这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
 		if(r){
-			window.open('kucunManage/mailtype!export?exportIds='+ids);
+			window.open('repertory/mailtype!export?exportIds='+ids);
 		}
 	});
 }
@@ -113,7 +113,7 @@ function exportUser(){
 </head>
 <body>
 <table id="dg" title="商品类别信息" class="easyui-datagrid" fitColumns="true"
-	 pagination="true" rownumbers="true" url="kucunManage/mailtype" fit="true" toolbar="#tb">
+	 pagination="true" rownumbers="true" url="repertory/mailtype" fit="true" toolbar="#tb">
 	<thead>
 		<tr>
 			<th data-options="field:'cb',checkbox:true"></th>

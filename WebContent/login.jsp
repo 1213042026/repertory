@@ -1,23 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <HTML>
 <HEAD>
 <TITLE>仓储管理系统</TITLE>
 <META http-equiv=Content-Type content="text/html; charset=gb2312">
 <LINK href="/repertory/css/admin.css" type="text/css" rel="stylesheet">
 <script type="text/javascript">
-	function checkform(){
-		var username=document.getElementById("username").value;
-		var password=document.getElementById("password").value;
-		if(username==null || username==""){
-			alert("用户名不能为空");
-			return ;
-		}else if(password==null ||password==""){
-			alert("密码不能为空");
-			return ;
-		}else{
-			document.getElementById("loginform").submit();
-		}
-	}
+window.onload = function() {
+  var submitBtn = document.getElementById("submit");
+  submitBtn.onclick = function (event){
+    var username=document.getElementById("username").value;
+    var password=document.getElementById("password").value;
+    if(username==null || username==""){
+      alert("用户名不能为空");
+      event.preventDefault();
+      return false;
+    }else if(password==null ||password==""){
+      alert("密码不能为空");
+      event.preventDefault();
+      return false;
+    }else{
+      document.getElementById("loginform").submit();
+    }
+  }
+}
 </script>
 </HEAD>
 <BODY>
@@ -59,15 +65,15 @@ border="1">
                 <TD>&nbsp; </TD>
                 <TD>角色:</TD>
                 <TD>
-                  <s:select label="角色" name="user.role" list="roleList" listKey="number" listValue="name" />
+                    <s:select name="number" list="rolelist" listKey="number" listValue="name"></s:select>  
                 </TD></TR>
               <TR height=5>
-                <TD colSpan=3></TD></TR>
+                <TD colSpan=3><p style="color:red;">${error}</p></TD>
+                </TR>
               <TR>
                 <TD>&nbsp;</TD>
                 <TD>&nbsp;</TD>
-                <TD><INPUT type=image height=18 width=70 
-                  src="/repertory/images/bt_login.gif" onclick="checkform()"><font color="red">${error }</font></TD>
+                <TD><button id="submit" type="submit" style="width: 70px;height: 20px;background-image: url(/repertory/images/bt_login.gif);cursor: pointer;"></button></TD>
                   </TR></FORM></TABLE></TD>
           <TD width=16><IMG height=122 src="/repertory/images/login_4.jpg" 
             width=16></TD></TR></TABLE>

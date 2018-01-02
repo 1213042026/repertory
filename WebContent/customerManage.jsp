@@ -32,7 +32,7 @@ function deleteCustomer(){
 	var ids=strIds.join(",");
 	$.messager.confirm("系统提示","您确认要删掉这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
 		if(r){
-			$.post("kucunManage/customer!delete",{delIds:ids},function(result){
+			$.post("repertory/customer!delete",{delIds:ids},function(result){
 				if(result.success){
 					$.messager.alert("系统提示","您已成功删除<font color=red>"+result.delNums+"</font>条数据！");
 					$("#dg").datagrid("reload");
@@ -47,7 +47,7 @@ function deleteCustomer(){
 
 function openCustomerAddDialog(){
 	$("#dlg").dialog("open").dialog("setTitle","添加供应商信息");
-	url="kucunManage/customer!save";
+	url="repertory/customer!save";
 }
 
 function openCustomerModifyDialog(){
@@ -64,7 +64,7 @@ function openCustomerModifyDialog(){
 	$("#dlg_customerNumber").val(row.customerNumber);
 	$("#dlg_linkman").val(row.linkman);
 	$("#dlg_phone").val(row.phone);
-	url="kucunManage/customer!save?customerId="+row.customerId;
+	url="repertory/customer!save?customerId="+row.customerId;
 }
 
 function closeCustomerDialog(){
@@ -113,7 +113,7 @@ function exportUser(){
 	var ids=strIds.join(",");
 	$.messager.confirm("系统提示","您确认要导出这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
 		if(r){
-			window.open('kucunManage/customer!export?exportIds='+ids);
+			window.open('repertory/customer!export?exportIds='+ids);
 		}
 	});
 }
@@ -121,7 +121,7 @@ function exportUser(){
 </head>
 <body>
 <table id="dg" title="供应商信息" class="easyui-datagrid" fitColumns="true"
-	 pagination="true" rownumbers="true" url="kucunManage/customer" fit="true" toolbar="#tb">
+	 pagination="true" rownumbers="true" url="repertory/customer" fit="true" toolbar="#tb">
 	<thead>
 		<tr>
 			<th data-options="field:'cb',checkbox:true"></th>

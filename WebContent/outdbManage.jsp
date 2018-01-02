@@ -33,7 +33,7 @@ function deleteOutdb(){
 	var ids=strIds.join(",");
 	$.messager.confirm("系统提示","您确认要删掉这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
 		if(r){
-			$.post("kucunManage/outdb!delete",{delIds:ids},function(result){
+			$.post("repertory/outdb!delete",{delIds:ids},function(result){
 				if(result.success){
 					$.messager.alert("系统提示","您已成功删除<font color=red>"+result.delNums+"</font>条数据！");
 					$("#dg").datagrid("reload");
@@ -49,7 +49,7 @@ function deleteOutdb(){
 function openOutdbAddDialog(){
 	$("#dlg").dialog("open").dialog("setTitle","添加入库信息");
 	var quater=document.getElementById("quater").value;
-	url="kucunManage/outdb!save";
+	url="repertory/outdb!save";
 }
 function saveOutdb(){
 	$("#fm").form("submit",{
@@ -85,7 +85,7 @@ function openOutdbModifyDialog(){
 	$("#dlg_outNumbers").val(row.outNumbers);
 	$("#dlg_outdbDesc").val(row.outdbDesc);
 	$("#dlg_quater").val(row.quarter);
-	url="kucunManage/outdb!save?outdbId="+row.outdbId;
+	url="repertory/outdb!save?outdbId="+row.outdbId;
 }
 
 function closeOutdbDialog(){
@@ -114,7 +114,7 @@ function exportUser(){
 	var ids=strIds.join(",");
 	$.messager.confirm("系统提示","您确认要导出这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
 		if(r){
-			window.open('kucunManage/outdb!export?exportIds='+ids);
+			window.open('repertory/outdb!export?exportIds='+ids);
 		}
 	});
 }
@@ -122,7 +122,7 @@ function exportUser(){
 </head>
 <body>
 <table id="dg" title="商品出库信息" class="easyui-datagrid" fitColumns="true"
-	 pagination="true" rownumbers="true" url="kucunManage/outdb" fit="true" toolbar="#tb">
+	 pagination="true" rownumbers="true" url="repertory/outdb" fit="true" toolbar="#tb">
 	<thead>
 		<tr>
 			<th data-options="field:'cb',checkbox:true"></th>
@@ -142,7 +142,7 @@ function exportUser(){
 		<table cellspacing="5px">
 			<tr>
 				<td >商品名称:</td>
-				<td><input class="easyui-combobox" id="dlg_mailId" name="outdb.mailId" data-options="editable:false,valueField:'mailId',textField:'mailName',url:'kucunManage/mail!mailComboList'"/></td>
+				<td><input class="easyui-combobox" id="dlg_mailId" name="outdb.mailId" data-options="editable:false,valueField:'mailId',textField:'mailName',url:'repertory/mail!mailComboList'"/></td>
 				<td>销售价:</td>
 				<td><input type="text" name="outdb.salesPrice" id="dlg_salesPrice" class="easyui-validatebox" required="true"/></td>
 			</tr>

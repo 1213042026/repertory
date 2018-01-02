@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class User {
 	private String number;
-	private Role role;
+	private String roleNumber;
 	private String userName;
 	private String userPwd;
 	private Date date;
@@ -24,14 +24,15 @@ public class User {
 	public String getNumber() {
 		return number;
 	}
+	
+	public String getRoleNumber() {
+		return roleNumber;
+	}
+	public void setRoleNumber(String roleNumber) {
+		this.roleNumber = roleNumber;
+	}
 	public void setNumber(String number) {
 		this.number = number;
-	}
-	public Role getRole() {
-		return role;
-	}
-	public void setRole(Role role) {
-		this.role = role;
 	}
 	public Date getDate() {
 		return date;
@@ -39,4 +40,10 @@ public class User {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	@Override
+	public String toString() {
+		return "User [number=" + number + ", roleNumber=" + roleNumber + ", userName=" + userName + ", userPwd=" + userPwd
+				+ ", date=" + date + "]";
+	}
+	
 }

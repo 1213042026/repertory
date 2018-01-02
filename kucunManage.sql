@@ -50,6 +50,40 @@ insert  into `t_role`(`number`, `name`) values ("R001",'仓库主管');
 insert  into `t_role`(`number`, `name`) values ("R002",'原材料仓库管理员');
 insert  into `t_role`(`number`, `name`) values ("R003",'成品仓库管理员');
 
+DROP TABLE IF EXISTS `t_permission`;
+
+CREATE TABLE `t_permission` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `number` varchar(200) DEFAULT NULL unique,
+  `name` varchar(200) DEFAULT NULL unique,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_role` */
+
+insert  into `t_permission`(`number`, `name`) values ("P001",'仓库管理');
+insert  into `t_permission`(`number`, `name`) values ("P002",'原材料仓库管理');
+insert  into `t_permission`(`number`, `name`) values ("P003",'成品仓库管理');
+
+DROP TABLE IF EXISTS `t_role_permission`;
+
+CREATE TABLE `t_role_permission` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `rolenumber` varchar(200) DEFAULT NULL,
+  `permissionnumber` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_role` */
+
+insert  into `t_role_permission`(`rolenumber`, `permissionnumber`) values ("R001",'P001');
+insert  into `t_role_permission`(`rolenumber`, `permissionnumber`) values ("R001",'P002');
+insert  into `t_role_permission`(`rolenumber`, `permissionnumber`) values ("R001",'P003');
+insert  into `t_role_permission`(`rolenumber`, `permissionnumber`) values ("R002",'P002');
+insert  into `t_role_permission`(`rolenumber`, `permissionnumber`) values ("R003",'P003');
+
+
+
 
 
 /*Table structure for table `t_customer` */

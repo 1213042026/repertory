@@ -33,7 +33,7 @@ function deleteIndb(){
 	var ids=strIds.join(",");
 	$.messager.confirm("系统提示","您确认要删掉这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
 		if(r){
-			$.post("kucunManage/indb!delete",{delIds:ids},function(result){
+			$.post("repertory/indb!delete",{delIds:ids},function(result){
 				if(result.success){
 					$.messager.alert("系统提示","您已成功删除<font color=red>"+result.delNums+"</font>条数据！");
 					$("#dg").datagrid("reload");
@@ -48,7 +48,7 @@ function deleteIndb(){
 
 function openIndbAddDialog(){
 	$("#dlg").dialog("open").dialog("setTitle","添加入库信息");
-	url="kucunManage/indb!save";
+	url="repertory/indb!save";
 }
 function saveIndb(){
 	$("#fm").form("submit",{
@@ -84,7 +84,7 @@ function openIndbModifyDialog(){
 	$("#dlg_indbDate").datebox("setValue",row.indbDate);
 	$("#dlg_inNumbers").val(row.inNumbers);
 	$("#dlg_indbDesc").val(row.indbDesc);
-	url="kucunManage/indb!save?indbId="+row.indbId;
+	url="repertory/indb!save?indbId="+row.indbId;
 }
 
 function closeIndbDialog(){
@@ -102,7 +102,7 @@ function resetValue(){
 </head>
 <body>
 <table id="dg" title="商品入库信息" class="easyui-datagrid" fitColumns="true"
-	 pagination="true" rownumbers="true" url="kucunManage/indb" fit="true" toolbar="#tb">
+	 pagination="true" rownumbers="true" url="repertory/indb" fit="true" toolbar="#tb">
 	<thead>
 		<tr>
 			<th data-options="field:'cb',checkbox:true"></th>
@@ -121,7 +121,7 @@ function resetValue(){
 		<table cellspacing="5px">
 			<tr>
 				<td >商品名称:</td>
-				<td><input class="easyui-combobox" id="dlg_mailId" name="indb.mailId" data-options="editable:false,valueField:'mailId',textField:'mailName',url:'kucunManage/mail!mailComboList'"/></td>
+				<td><input class="easyui-combobox" id="dlg_mailId" name="indb.mailId" data-options="editable:false,valueField:'mailId',textField:'mailName',url:'repertory/mail!mailComboList'"/></td>
 				<td>进价:</td>
 				<td><input type="text" name="indb.inPrice" id="dlg_inPrice" class="easyui-validatebox" required="true"/></td>
 			</tr>
