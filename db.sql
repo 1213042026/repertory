@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `t_employ`;
 CREATE TABLE `t_employee` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `number` varchar(200) DEFAULT NULL unique,
-  `rolenumber` varchar(200) DEFAULT NULL unique,
-  `username` varchar(20) DEFAULT NULL,
+  `rolenumber` varchar(200) DEFAULT NULL,
+  `username` varchar(20) DEFAULT NULL unique,
   `userpwd` varchar(20) DEFAULT NULL,
   `joindate` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)

@@ -9,18 +9,9 @@
 			<result name="error">/login.jsp</result>
 			<result name="success" type="redirect">/main.jsp</result>
 		</action>
-		<action name="customer" class="com.ms.action.CustomerAction">
+		<action name="employee" class="com.ms.action.EmployeeAction">
 		</action>
-		<action name="mail" class="com.ms.action.MailAction">
-		    <result name="searchMail">/view/indexTemp.jsp</result>
-		</action>
-		<action name="mailtype" class="com.ms.action.MailTypeAction">
-		</action>
-		<action name="indb" class="com.ms.action.IndbAction">
-		</action>
-		<action name="outdb" class="com.ms.action.OutdbAction">
-		</action>
-		<action name="stock" class="com.ms.action.StockAction">
-		</action>
+
+
     </package>
 </struts>

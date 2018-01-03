@@ -60,6 +60,8 @@ public class UserAction extends ActionSupport implements ServletRequestAware{
 		User resultUser=userdao.findUser(con, user);
 		if(resultUser!=null){
 			session.setAttribute("currentuser", resultUser);
+			String rolename = roleDao.getRoleName(number);
+			session.setAttribute("rolename", rolename);
 			return SUCCESS;
 		}else{
 			rolelist = roleDao.getRoleList("");

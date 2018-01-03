@@ -12,10 +12,8 @@ import net.sf.json.JSONObject;
 public class JsonUtil {
 	public static JSONArray fromrstoJsonArray(ResultSet rs) throws SQLException{
 		JSONArray array=new JSONArray();
-		//��ȡ��
 		ResultSetMetaData metadata=(ResultSetMetaData) rs.getMetaData();
 		int columns=metadata.getColumnCount();
-		//����ResultSet
 		while(rs.next()){
 			JSONObject jsonobj=new JSONObject();
 			for(int i=1;i<=columns;i++){
@@ -23,7 +21,7 @@ public class JsonUtil {
 				String columnValue=rs.getString(columnName);
 				Object o=rs.getObject(i);
 				if(o instanceof Date){
-					jsonobj.put(columnName, DateUtil.formatDate((Date)o, "yyyy-MM-dd"));
+					jsonobj.put(columnName, DateUtil.formatDate((Date)o, "yyyy-MM-dd HH:mm:ss"));
 				}else{
 					jsonobj.put(columnName, columnValue);
 				}				

@@ -3,12 +3,19 @@ package com.ms.model;
 import java.util.Date;
 
 public class User {
+	private Integer id;
 	private String number;
 	private String roleNumber;
 	private String userName;
 	private String userPwd;
 	private Date date;
 	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getUserName() {
 		return userName;
 	}

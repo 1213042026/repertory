@@ -24,4 +24,17 @@ public class RoleDao {
 		}
 		return rolelist;
 	}
+
+	public String getRoleName(String number) throws Exception{
+		Connection con=DButil.getCon();
+		String reslut = "";
+		String sql = "select name from t_role where number = ?";
+		PreparedStatement pst=con.prepareStatement(sql);
+		pst.setString(1, number);
+		ResultSet rs=pst.executeQuery();
+		if(rs.next()){
+			reslut = rs.getString("name");
+		}
+		return reslut;
+	}
 }
