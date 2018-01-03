@@ -18,7 +18,6 @@
 	 pagination="true" rownumbers="true" url="repertory/permission" fit="true">
 	<thead>
 		<tr>
-			<th data-options="field:'cb',checkbox:false"></th>
 			<th data-options="field:'number',width:100,align:'center'">权限编码</th>
 			<th data-options="field:'name',width:100,align:'center'">权限名称</th>
 		</tr>
