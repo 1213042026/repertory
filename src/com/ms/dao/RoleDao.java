@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import com.ms.model.PageBean;
 import com.ms.model.Role;
 import com.ms.util.DButil;
 
@@ -36,5 +38,36 @@ public class RoleDao {
 			reslut = rs.getString("name");
 		}
 		return reslut;
+	}
+
+	public ResultSet roleList(PageBean pagebean){
+		StringBuffer sb=new StringBuffer("select * from t_role");
+		if(pagebean!=null){
+			sb.append(" limit "+pagebean.getStart()+","+pagebean.getRows());
+		}
+		
+		Connection con=null;
+		ResultSet rs=null;
+		try {
+			con=DButil.getCon();
+			PreparedStatement pst=con.prepareStatement(sb.toString().replaceFirst("and", "where"));
+			System.out.println(sb);
+			rs=pst.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+	public int roleCount()throws Exception{
+		StringBuffer sb=new StringBuffer("select count(*) as total from t_role");
+		Connection con= DButil.getCon();
+		PreparedStatement pst=con.prepareStatement(sb.toString());
+		ResultSet rs=pst.executeQuery();
+		if(rs.next()){
+			return rs.getInt("total");
+		}else{
+			return 0;
+		}
 	}
 }

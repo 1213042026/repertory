@@ -2,6 +2,10 @@ package com.ms.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import com.ms.model.PageBean;
 
 public class DButil {
 	public static Connection getCon()throws Exception{
@@ -18,8 +22,37 @@ public class DButil {
 			con.close();
 		}
 	}
-	public static void main(String[] args)throws Exception {
-		Connection con=DButil.getCon();
-		System.out.println(con);
+	
+	public static ResultSet queryList(String sql, PageBean pagebean){
+		StringBuffer sb=new StringBuffer(sql);
+		if(pagebean!=null){
+			sb.append(" limit "+pagebean.getStart()+","+pagebean.getRows());
+		}
+		
+		Connection con=null;
+		ResultSet rs=null;
+		try {
+			con=DButil.getCon();
+			PreparedStatement pst=con.prepareStatement(sb.toString().replaceFirst("and", "where"));
+			System.out.println(sb);
+			rs=pst.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	public static int queryCount(String sql) {
+		try {
+			Connection con= DButil.getCon();
+			PreparedStatement pst=con.prepareStatement(sql);
+			ResultSet rs=pst.executeQuery();
+			if(rs.next()){
+				return rs.getInt("total");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }

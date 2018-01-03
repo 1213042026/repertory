@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>角色信息管理</title>
+<title>权限信息管理</title>
 <link rel="stylesheet" type="text/css" href="jquery-easyui-1.3.3/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="jquery-easyui-1.3.3/themes/icon.css">
 <script type="text/javascript" src="jquery-easyui-1.3.3/jquery.min.js"></script>
@@ -14,13 +14,13 @@
 </script>
 </head>
 <body>
-<table id="dg" title="角色信息" class="easyui-datagrid" fitColumns="true"
-	 pagination="true" rownumbers="true" url="repertory/role" fit="true">
+<table id="dg" title="权限信息" class="easyui-datagrid" fitColumns="true"
+	 pagination="true" rownumbers="true" url="repertory/permission" fit="true">
 	<thead>
 		<tr>
 			<th data-options="field:'cb',checkbox:false"></th>
-			<th data-options="field:'number',width:100,align:'center'">角色编码</th>
-			<th data-options="field:'name',width:100,align:'center'">角色名称</th>
+			<th data-options="field:'number',width:100,align:'center'">权限编码</th>
+			<th data-options="field:'name',width:100,align:'center'">权限名称</th>
 		</tr>
 	</thead>	
 </table>

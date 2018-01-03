@@ -11,7 +11,10 @@
 		</action>
 		<action name="employee" class="com.ms.action.EmployeeAction">
 		</action>
-
+		<action name="role" class="com.ms.action.RoleAction">
+		</action>
+		<action name="permission" class="com.ms.action.PermissionAction">
+		</action>
 
     </package>
 </struts>
