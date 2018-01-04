@@ -55,4 +55,69 @@ public class DButil {
 		}
 		return 0;
 	}
+
+	public static ResultSet queryList(String sql, PageBean pagebean, String keyword, String field){
+		StringBuffer sb=new StringBuffer(sql);
+		if(StringUtil.isNotEmpty(keyword)){
+			sb.append(" and " + field + " like '%"+keyword+"%'");
+		}
+		if(pagebean!=null){
+			sb.append(" limit "+pagebean.getStart()+","+pagebean.getRows());
+		}
+		
+		Connection con=null;
+		ResultSet rs=null;
+		try {
+			con=DButil.getCon();
+			PreparedStatement pst=con.prepareStatement(sb.toString().replaceFirst("and", "where"));
+			System.out.println(sb);
+			rs=pst.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+	public static int queryCount(String sql, String keyword, String field) {
+		StringBuffer sb=new StringBuffer(sql);
+		if(StringUtil.isNotEmpty(keyword)){
+			sb.append(" and " + field + " like '%"+keyword+"%'");
+		}
+		try {
+			Connection con= DButil.getCon();
+			PreparedStatement pst=con.prepareStatement(sb.toString());
+			ResultSet rs=pst.executeQuery();
+			if(rs.next()){
+				return rs.getInt("total");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public static int deleteByIds(String sql) {
+		try {
+			Connection con=DButil.getCon();
+			PreparedStatement pst=con.prepareStatement(sql);
+			return pst.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public static Object queryOneRecordField(String sql) {
+		try {
+			Connection con=DButil.getCon();
+			PreparedStatement pst=con.prepareStatement(sql);
+			ResultSet rs=pst.executeQuery();
+			if(rs.next()){
+				return rs.getObject(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

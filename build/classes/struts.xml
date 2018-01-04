@@ -17,6 +17,10 @@
 		</action>
 		<action name="rolepermission" class="com.ms.action.RolePermissionAction">
 		</action>
+		<action name="store" class="com.ms.action.StoreAction">
+		</action>
+		<action name="place" class="com.ms.action.PlaceAction">
+		</action>
 
     </package>
 </struts>

@@ -15,4 +15,34 @@ public class RolePermissionDao implements BaseDao {
 	public int getCount() {
 		return DButil.queryCount("select count(*) as total from t_role_permission");
 	}
+
+	@Override
+	public int insert(Object t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(Object t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteByIds(String delIds) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ResultSet getList(PageBean pagebean, String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getCount(String keyword) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
