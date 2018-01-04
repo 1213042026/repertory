@@ -118,3 +118,19 @@ insert  into `t_place`(`number`, `storenumber`, `name`, `remark`) values ("P001"
 insert  into `t_place`(`number`, `storenumber`, `name`, `remark`) values ("P003",'S002', '3号仓位', '面积一半');
 
 
+DROP TABLE IF EXISTS `t_raw_material`;
+
+CREATE TABLE `t_raw_material` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `number` varchar(200) DEFAULT NULL unique,
+  `name` varchar(200) DEFAULT NULL,
+  `price` varchar(50) DEFAULT NULL,
+  `buyer` varchar(100) DEFAULT NULL,
+  `buydate` datetime DEFAULT NULL,
+  `catagory` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_raw_material` */
+
+insert  into `t_raw_material`(`number`, `name`, `price`, `buyer`, `buydate`, `catagory`) values ("M001",'原材料１', '500.0', '张三', '2012-09-30 09:00:00', '封口材料');
