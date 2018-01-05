@@ -24,5 +24,7 @@
 
 		<action name="rawMaterial" class="com.ms.action.RawMaterialAction">
 		</action>
+		<action name="receiveOrder" class="com.ms.action.ReceiveOrderAction">
+		</action>
     </package>
 </struts>

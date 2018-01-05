@@ -73,19 +73,14 @@
 								url:"rawMaterialManage.jsp"
 							}
 						},{
-							text:"日常操作",
+							text:"收料管理",
 							attributes:{
-								url:"rawDailyOperationManage.jsp"
+								url:"receiveMaterialManage.jsp"
 							}
 						},{
-							text:"验收，退货记录",
+							text:"领料管理",
 							attributes:{
-								url:"acceptRefundRecordManage.jsp"
-							}
-						},{
-							text:"领料记录",
-							attributes:{
-								url:"materialRequisitionManage.jsp"
+								url:"pickMaterialManage.jsp"
 							}
 						},{
 							text:"库存盘点",
@@ -153,19 +148,14 @@
 								url:"rawMaterialManage.jsp"
 							}
 						},{
-							text:"日常操作",
+							text:"收料管理",
 							attributes:{
-								url:"rawDailyOperationManage.jsp"
+								url:"receiveMaterialManage.jsp"
 							}
 						},{
-							text:"验收，退货记录",
+							text:"领料管理",
 							attributes:{
-								url:"acceptRefundRecordManage.jsp"
-							}
-						},{
-							text:"领料记录",
-							attributes:{
-								url:"materialRequisitionManage.jsp"
+								url:"pickMaterialManage.jsp"
 							}
 						},{
 							text:"库存盘点",

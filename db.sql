@@ -134,3 +134,26 @@ CREATE TABLE `t_raw_material` (
 /*Data for the table `t_raw_material` */
 
 insert  into `t_raw_material`(`number`, `name`, `price`, `buyer`, `buydate`, `catagory`) values ("M001",'原材料１', '500.0', '张三', '2012-09-30 09:00:00', '封口材料');
+
+
+ CREATE TABLE `t_receive_order` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `number` varchar(200) DEFAULT NULL unique,
+  `rawmaterialnumber` varchar(200) DEFAULT NULL,
+  `rawmaterialname` varchar(200) DEFAULT NULL,
+  `singleprice` varchar(50) DEFAULT NULL,
+  `count` varchar(50) DEFAULT NULL,
+  `buydate` datetime DEFAULT NULL,
+  `suppliernumber` varchar(50) DEFAULT NULL,
+  `totalprice` varchar(50) DEFAULT NULL,
+  `storenumber` varchar(50) DEFAULT NULL,
+  `placenumber` varchar(50) DEFAULT NULL,
+  `reviewstatus` varchar(50) DEFAULT '未审核',
+  `isreceive` varchar(50) DEFAULT '未收料',
+  `ispick` varchar(50) DEFAULT '未领料',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_receive_order` */
+
+insert  into `t_receive_order`(`number`, `rawmaterialnumber`, `rawmaterialname`, `singleprice`, `count`, `buydate`, `suppliernumber`, `totalprice`, `storenumber`, `placenumber`) values ("O136552",'M001', '原材料１', '50.0', '4', '2012-09-30 09:00:00','SP001','200','S001','P001');

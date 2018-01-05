@@ -85,7 +85,7 @@ public class DButil {
 		}
 		try {
 			Connection con= DButil.getCon();
-			PreparedStatement pst=con.prepareStatement(sb.toString());
+			PreparedStatement pst=con.prepareStatement(sb.toString().replaceFirst("and", "where"));
 			ResultSet rs=pst.executeQuery();
 			if(rs.next()){
 				return rs.getInt("total");
