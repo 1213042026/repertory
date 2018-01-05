@@ -9,7 +9,7 @@ import com.ms.model.PageBean;
 
 public class DButil {
 	public static Connection getCon()throws Exception{
-		String url="jdbc:mysql://localhost:3306/db_repertory";
+		String url="jdbc:mysql://localhost:3306/db_repertory?characterEncoding=utf8";
 		String name="root";
 		String pwd="root";
 		String driver="com.mysql.jdbc.Driver";

@@ -63,7 +63,7 @@ function openEmplyeeModifyDialog(){
 	$("#dlg_roleNumber").val(row.rolenumber);
 	$("#dlg_userName").val(row.username);
 	$("#dlg_userPwd").val(row.userpwd);
-	$("#dlg_joindate").val(row.joindate);
+	$('#dlg_joindate').datetimebox('setValue', row.joindate);
 	url="repertory/employee!save?employeeId="+row.id;
 }
 

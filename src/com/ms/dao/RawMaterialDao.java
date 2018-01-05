@@ -3,6 +3,8 @@ package com.ms.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+
 import com.ms.model.PageBean;
 import com.ms.model.RawMaterial;
 import com.ms.util.DButil;
@@ -29,7 +31,7 @@ public class RawMaterialDao implements BaseDao<RawMaterial> {
 			pst.setString(2, rawMaterial.getName());
 			pst.setString(3, rawMaterial.getPrice());
 			pst.setString(4, rawMaterial.getBuyer());
-			pst.setString(5, rawMaterial.getBuyDate());
+			pst.setTimestamp(5, new Timestamp(rawMaterial.getBuyDate().getTime()));
 			pst.setString(6, rawMaterial.getCatagory());
 			return pst.executeUpdate();
 		} catch (Exception e) {
@@ -48,7 +50,7 @@ public class RawMaterialDao implements BaseDao<RawMaterial> {
 			pst.setString(2, rawMaterial.getName());
 			pst.setString(3, rawMaterial.getPrice());
 			pst.setString(4, rawMaterial.getBuyer());
-			pst.setString(5, rawMaterial.getBuyDate());
+			pst.setTimestamp(5, new Timestamp(rawMaterial.getBuyDate().getTime()));
 			pst.setString(6, rawMaterial.getCatagory());
 			pst.setInt(7, rawMaterial.getId());
 			return pst.executeUpdate();

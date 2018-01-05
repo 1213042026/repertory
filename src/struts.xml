@@ -22,5 +22,7 @@
 		<action name="place" class="com.ms.action.PlaceAction">
 		</action>
 
+		<action name="rawMaterial" class="com.ms.action.RawMaterialAction">
+		</action>
     </package>
 </struts>

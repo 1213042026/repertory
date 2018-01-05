@@ -11,6 +11,38 @@
 <script type="text/javascript" src="jquery-easyui-1.3.3/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
+
+$(function() {
+	$("#dg").datagrid({
+		onClickRow : function(rowIndex, rowData) {
+		    $('body').layout('add',{
+			    region: 'south',
+			    height: 280,
+			    title: '原材料明细',
+			    split: true,
+			    content: '<div class="easyui-panel" style="padding:10px;" data-options="fit:true">' +
+			             '<table id="panelView" class="easyui-propertygrid"></table>' +
+						 '</div>'
+		    });
+		    
+			var panelData = [];
+			var item = {};
+			for(var key in rowData) {
+				item = {
+					"name" : key,
+					"value" : rowData[key]
+				}
+				panelData.push(item)
+			}
+
+		    $('#panelView').propertygrid({
+				data : panelData,
+				fit : true
+			});
+		}
+	})
+})
+
 var url;
 
 function searchRawMaterial(){
@@ -63,7 +95,7 @@ function openRawMaterialModifyDialog(){
 	$("#dlg_name").val(row.name);
 	$("#dlg_price").val(row.price);
 	$("#dlg_buyer").val(row.buyer);
-	$("#dlg_buydate").val(row.buydate);
+	$('#dlg_buydate').datetimebox('setValue', row.buydate);
 	$("#dlg_catagory").val(row.catagory);
 	url="repertory/rawMaterial!save?rawMaterialId="+row.id;
 }
@@ -105,21 +137,24 @@ function saveRawMaterial(){
 }
 </script>
 </head>
-<body>
-<table id="dg" title="原材料信息" class="easyui-datagrid" fitColumns="true"
-	 pagination="true" rownumbers="true" url="repertory/rawMaterial" fit="true" toolbar="#tb">
-	<thead>
-		<tr>
-			<th data-options="field:'cb',checkbox:true"></th>
-			<th data-options="field:'number',width:50,align:'center'">原材料编码</th>
-			<th data-options="field:'name',width:100,align:'center'">原材料名称</th>
-			<th data-options="field:'catagory',width:100,align:'center'">类别</th>
-			<th data-options="field:'price',width:100,align:'center'">单价</th>
-			<th data-options="field:'buyer',width:100,align:'center'">采购员</th>
-			<th data-options="field:'buydate',width:100,align:'center'">采购日期</th>
-		</tr>
-	</thead>	
-</table>
+<body class="easyui-layout">
+<div data-options="region:'center'">
+	<table id="dg" title="原材料信息" class="easyui-datagrid" fitColumns="true"
+		 pagination="true" rownumbers="true" url="repertory/rawMaterial" fit="true" toolbar="#tb">
+		<thead>
+			<tr>
+				<th data-options="field:'cb',checkbox:true"></th>
+				<th data-options="field:'number',width:50,align:'center'">原材料编码</th>
+				<th data-options="field:'name',width:100,align:'center'">原材料名称</th>
+				<th data-options="field:'catagory',width:100,align:'center'">类别</th>
+				<th data-options="field:'price',width:100,align:'center'">单价</th>
+				<th data-options="field:'buyer',width:100,align:'center'">采购员</th>
+				<th data-options="field:'buydate',width:100,align:'center'">采购日期</th>
+			</tr>
+		</thead>	
+	</table>
+</div>
+
 <div id="dlg" class="easyui-dialog" style="width:590px;height:350px;padding:10px 20px" closed="true" buttons="#dlg-button">
 	<form action="" method="post" id="fm">
 		<table cellspacing="5px">
@@ -136,10 +171,10 @@ function saveRawMaterial(){
 				<td>
 				    <select id="dlg_catagory" class="easyui-combobox" name="rawMaterial.catagory" style="width:200px;">
 					    <option value="管材">管材</option>
-					    <option　value="电阻发热丝">电阻发热丝</option>
-					    <option　value="引出棒">引出棒</option>
-					    <option　value="氧化镁">氧化镁</option>
-					    <option　value="封口材料">封口材料</option>
+					    <option>电阻发热丝</option>
+					    <option>引出棒</option>
+					    <option>氧化镁</option>
+					    <option>封口材料</option>
 				    </select>
 				</td>
 			</tr>
@@ -152,8 +187,8 @@ function saveRawMaterial(){
 				<td>
 				<select id="dlg_buyer" class="easyui-combobox" name="rawMaterial.buyer" style="width:200px;">
 					    <option value="张三">张三</option>
-					    <option　value="李四">李四</option>
-					    <option　value="王五">王五</option>
+					    <option>李四</option>
+					    <option>王五</option>
 				    </select>
 				</td>
 			</tr>
