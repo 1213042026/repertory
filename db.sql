@@ -157,3 +157,35 @@ insert  into `t_raw_material`(`number`, `name`, `price`, `buyer`, `buydate`, `ca
 /*Data for the table `t_receive_order` */
 
 insert  into `t_receive_order`(`number`, `rawmaterialnumber`, `rawmaterialname`, `singleprice`, `count`, `buydate`, `suppliernumber`, `totalprice`, `storenumber`, `placenumber`) values ("O136552",'M001', '原材料１', '50.0', '4', '2012-09-30 09:00:00','SP001','200','S001','P001');
+
+
+DROP TABLE IF EXISTS `t_raw_inventory`;
+
+CREATE TABLE `t_raw_inventory` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `rawmaterialnumber` varchar(200) DEFAULT NULL unique,
+  `restcount` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_raw_inventory` */
+
+insert  into `t_raw_inventory`(`rawmaterialnumber`, `restcount`) values ("M001",'30');
+
+
+DROP TABLE IF EXISTS `t_supplier`;
+
+CREATE TABLE `t_supplier` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `number` varchar(200) DEFAULT NULL unique,
+  `name` varchar(50) DEFAULT NULL,
+  `tel` varchar(50) DEFAULT NULL,
+  `address` varchar(80) DEFAULT NULL,
+  `fax` varchar(50) DEFAULT NULL,
+  `remark` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_supplier` */
+
+insert  into `t_supplier`(`number`, `name`, `tel`, `address`, `fax`, `remark`) values ("SP001",'江苏XX公司','15952536125','江苏省苏州市','010-888999','分销');

@@ -26,5 +26,9 @@
 		</action>
 		<action name="receiveOrder" class="com.ms.action.ReceiveOrderAction">
 		</action>
+		<action name="rawInventory" class="com.ms.action.RawInventoryAction">
+		</action>
+		<action name="supplier" class="com.ms.action.SupplierAction">
+		</action>
     </package>
 </struts>
