@@ -15,6 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ReceiveOrderAction extends ActionSupport{
 	private String receiveOrderNumber;
+	private String rawMaterialNumber;
 	private String delIds;
 	private String receiveOrderId;
 	private ReceiveOrder receiveOrder;
@@ -25,6 +26,12 @@ public class ReceiveOrderAction extends ActionSupport{
 	}
 	public void setReceiveOrderNumber(String receiveOrderNumber) {
 		this.receiveOrderNumber = receiveOrderNumber;
+	}
+	public String getRawMaterialNumber() {
+		return rawMaterialNumber;
+	}
+	public void setRawMaterialNumber(String rawMaterialNumber) {
+		this.rawMaterialNumber = rawMaterialNumber;
 	}
 	public String getDelIds() {
 		return delIds;
@@ -110,6 +117,101 @@ public class ReceiveOrderAction extends ActionSupport{
 			result.put("result", "fail");
 		}
 		ResponseWrite.write(result, ServletActionContext.getResponse());
+		return null;
+	}
+
+	public String review()throws Exception{
+		try {
+			JSONObject result=new JSONObject();
+			if(StringUtil.isNotEmpty(rawMaterialNumber) && StringUtil.isNotEmpty(receiveOrderId)){
+				int resultCode = ((ReceiveOrderDao) baseDao).review(rawMaterialNumber, receiveOrderId);
+				if (resultCode == 0) {
+					result.put("result", "fail");
+				} else {
+					result.put("result", "success");
+				}
+			} else {
+				result.put("result", "fail");
+			}
+			
+			ResponseWrite.write(result, ServletActionContext.getResponse());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public String reviewList() throws Exception {
+		PageBean pagebean=new PageBean(Integer.parseInt(rows), Integer.parseInt(page));
+		try {
+			ResultSet rs=((ReceiveOrderDao) baseDao).getReviewList(pagebean);
+			
+			JSONArray jsonarray=JsonUtil.fromrstoJsonArray(rs);
+			int total=((ReceiveOrderDao) baseDao).getReviewCount();
+			result.put("rows", jsonarray);
+			result.put("total", total);
+			ResponseWrite.write(result, ServletActionContext.getResponse());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public String receive()throws Exception{
+		try {
+			JSONObject result=new JSONObject();
+			if(StringUtil.isNotEmpty(receiveOrderId)){
+				int resultCode = ((ReceiveOrderDao) baseDao).receive(receiveOrderId);
+				if (resultCode == 0) {
+					result.put("result", "fail");
+				} else {
+					result.put("result", "success");
+				}
+			} else {
+				result.put("result", "fail");
+			}
+			
+			ResponseWrite.write(result, ServletActionContext.getResponse());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public String pickList() throws Exception {
+		PageBean pagebean=new PageBean(Integer.parseInt(rows), Integer.parseInt(page));
+		try {
+			ResultSet rs=((ReceiveOrderDao) baseDao).getPickList(pagebean);
+			
+			JSONArray jsonarray=JsonUtil.fromrstoJsonArray(rs);
+			int total=((ReceiveOrderDao) baseDao).getPickCount();
+			result.put("rows", jsonarray);
+			result.put("total", total);
+			ResponseWrite.write(result, ServletActionContext.getResponse());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public String pick()throws Exception{
+		try {
+			JSONObject result=new JSONObject();
+			if(StringUtil.isNotEmpty(receiveOrderId)){
+				int resultCode = ((ReceiveOrderDao) baseDao).pick(receiveOrderId);
+				if (resultCode == 0) {
+					result.put("result", "fail");
+				} else {
+					result.put("result", "success");
+				}
+			} else {
+				result.put("result", "fail");
+			}
+			
+			ResponseWrite.write(result, ServletActionContext.getResponse());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 }

@@ -114,25 +114,36 @@ function saveReceiveOrder(){
 }
 
 
-function review(id) {
+function review(id, rawmaterialnumber) {
 	// console.log(id)
 	$.ajax({
 		type:'get',
-		url:'repertory/receiveOrder',
-		data:{receiveOrderId:id},
+		url:'repertory/receiveOrder!review',
+		data:{
+			receiveOrderId:id,
+			rawMaterialNumber:rawmaterialnumber
+		},
 		dataType:'json',
 		success:function(data) {
-			
+			// data = JSON.parse(data)
+			if(data.result != 'success'){
+				$.messager.alert("系统提示",'审核失败');
+				window.location.href = "rawMaterialManage.jsp";
+			}else{
+				$.messager.alert("系统提示","审核成功");
+				window.location.href = "receiveMaterialList.jsp";
+			}
 		},
 		error:function(data){
-			
+			$.messager.alert("系统提示","审核失败");
 		}
 	});
 }
 
 var formatReview = function(value,rawData,index) {
 	if (rawData.reviewstatus == "未审核")　{
-		return '<a href="#" onclick="review(' + rawData.id + ')" class="rw-btn">审核</a>';
+		return '<a href="#" onclick="review(\'' + rawData.id + '\', \'' + rawData.rawmaterialnumber +
+			'\')" class="rw-btn">审核</a>';
 	} else {
 		return value;
 	}
