@@ -180,7 +180,7 @@ $(function() {
 			</tr>
 			<tr>
 				<td>数量:</td>
-				<td><input type="text" name="intoStorage.count" id="dlg_count" class="easyui-validatebox" required="true"/></td>
+				<td><input type="number" name="intoStorage.count" id="dlg_count" class="easyui-validatebox" required="true"/></td>
 			</tr>
 			<tr>
 				<td>生产中心:</td>

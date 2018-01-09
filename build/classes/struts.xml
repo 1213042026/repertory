@@ -37,5 +37,11 @@
 		</action>
 		<action name="saleOrder" class="com.ms.action.SaleOrderAction">
 		</action>
+		<action name="dump" class="com.ms.action.DumpAction">
+		</action>
+		<action name="finishedInventory" class="com.ms.action.FinishedInventoryAction">
+		</action>
+		<action name="customer" class="com.ms.action.CustomerAction">
+		</action>
     </package>
 </struts>

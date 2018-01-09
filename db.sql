@@ -233,7 +233,7 @@ DROP TABLE IF EXISTS `t_sale_order`;
   CREATE TABLE `t_sale_order` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `number` varchar(200) DEFAULT NULL,
-  `finishedmaterialnumber` varchar(200) DEFAULT NULL unique,
+  `finishedmaterialnumber` varchar(200) DEFAULT NULL,
   `finishedmaterialname` varchar(200) DEFAULT NULL,
   `singleprice` varchar(50) DEFAULT NULL,
   `count` int(50) DEFAULT NULL,
@@ -250,3 +250,49 @@ DROP TABLE IF EXISTS `t_sale_order`;
 /*Data for the table `t_sale_order` */
 
 insert  into `t_sale_order`(`number`, `finishedmaterialnumber`, `finishedmaterialname`,`singleprice`, `count`,  `date`, `customernumber`, `totalprice`, `storenumber`, `placenumber`) values ("SO001","FM001",'成品１', '50', 20, '2017-01-09 15:10:20', 'C001', '1000','S001',"P001");
+
+
+  DROP TABLE IF EXISTS `t_dump`;
+
+CREATE TABLE `t_dump` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `finishedmaterialnumber` varchar(200) DEFAULT NULL unique,
+  `finishedmaterialname` varchar(200) DEFAULT NULL,
+  `storenumber` varchar(50) DEFAULT NULL,
+  `placenumber` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_dump` */
+
+insert  into `t_dump`(`finishedmaterialnumber`, `finishedmaterialname`, `storenumber`, `placenumber`) values ("FM001",'成品１', 'SO002', 'P0061');
+
+  DROP TABLE IF EXISTS `t_finished_inventory`;
+
+CREATE TABLE `t_finished_inventory` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `finishedmaterialnumber` varchar(200) DEFAULT NULL unique,
+  `restcount` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_finished_inventory` */
+
+insert  into `t_finished_inventory`(`finishedmaterialnumber`, `restcount`) values ("FM001",'60');
+
+DROP TABLE IF EXISTS `t_customer`;
+
+CREATE TABLE `t_customer` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `number` varchar(200) DEFAULT NULL unique,
+  `name` varchar(50) DEFAULT NULL,
+  `tel` varchar(50) DEFAULT NULL,
+  `address` varchar(80) DEFAULT NULL,
+  `fax` varchar(50) DEFAULT NULL,
+  `remark` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_customer` */
+
+insert  into `t_customer`(`number`, `name`, `tel`, `address`, `fax`, `remark`) values ("CST001",'江苏XX公司','15952536125','江苏省苏州市','010-888999','分销');

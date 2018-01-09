@@ -201,7 +201,7 @@ $(function() {
 			</tr>
 			<tr>
 				<td>数量:</td>
-				<td><input type="text" name="saleOrder.count" id="dlg_count" class="easyui-validatebox" required="true"/></td>
+				<td><input type="number" name="saleOrder.count" id="dlg_count" class="easyui-validatebox" required="true"/></td>
 			</tr>
 			<tr>
 				<td>时间:</td>

@@ -114,7 +114,7 @@
 						},{
 							text:"转储管理",
 							attributes:{
-								url:"dumpAllocationManage.jsp"
+								url:"dumpManage.jsp"
 							}
 						},{
 							text:"库存盘点",
@@ -191,7 +191,7 @@
 						},{
 							text:"转储管理",
 							attributes:{
-								url:"dumpAllocationManage.jsp"
+								url:"dumpManage.jsp"
 							}
 						},{
 							text:"库存盘点",
