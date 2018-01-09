@@ -30,5 +30,12 @@
 		</action>
 		<action name="supplier" class="com.ms.action.SupplierAction">
 		</action>
+
+		<action name="finishedMaterial" class="com.ms.action.FinishedMaterialAction">
+		</action>
+		<action name="intoStorage" class="com.ms.action.IntoStorageAction">
+		</action>
+		<action name="saleOrder" class="com.ms.action.SaleOrderAction">
+		</action>
     </package>
 </struts>

@@ -102,24 +102,19 @@
 								url:"finishedMaterialManage.jsp"
 							}
 						},{
-							text:"日常操作",
-							attributes:{
-								url:"finishedDailyOperationManage.jsp"
-							}
-						},{
-							text:"转储，调拨管理",
-							attributes:{
-								url:"dumpAllocationManage.jsp"
-							}
-						},{
-							text:"入库记录",
+							text:"入库管理",
 							attributes:{
 								url:"intoStorageManage.jsp"
 							}
 						},{
-							text:"出库记录",
+							text:"出库管理",
 							attributes:{
 								url:"outStorageManage.jsp"
+							}
+						},{
+							text:"转储管理",
+							attributes:{
+								url:"dumpAllocationManage.jsp"
 							}
 						},{
 							text:"库存盘点",
@@ -184,24 +179,19 @@
 								url:"finishedMaterialManage.jsp"
 							}
 						},{
-							text:"日常操作",
-							attributes:{
-								url:"finishedDailyOperationManage.jsp"
-							}
-						},{
-							text:"转储，调拨管理",
-							attributes:{
-								url:"dumpAllocationManage.jsp"
-							}
-						},{
-							text:"入库记录",
+							text:"入库管理",
 							attributes:{
 								url:"intoStorageManage.jsp"
 							}
 						},{
-							text:"出库记录",
+							text:"出库管理",
 							attributes:{
 								url:"outStorageManage.jsp"
+							}
+						},{
+							text:"转储管理",
+							attributes:{
+								url:"dumpAllocationManage.jsp"
 							}
 						},{
 							text:"库存盘点",

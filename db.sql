@@ -133,7 +133,7 @@ CREATE TABLE `t_raw_material` (
 
 /*Data for the table `t_raw_material` */
 
-insert  into `t_raw_material`(`number`, `name`, `price`, `buyer`, `buydate`, `catagory`) values ("M001",'原材料１', '500.0', '张三', '2012-09-30 09:00:00', '封口材料');
+insert  into `t_raw_material`(`number`, `name`, `price`, `buyer`, `buydate`, `catagory`) values ("RM001",'原材料１', '500.0', '张三', '2012-09-30 09:00:00', '封口材料');
 
 
  CREATE TABLE `t_receive_order` (
@@ -156,7 +156,7 @@ insert  into `t_raw_material`(`number`, `name`, `price`, `buyer`, `buydate`, `ca
 
 /*Data for the table `t_receive_order` */
 
-insert  into `t_receive_order`(`number`, `rawmaterialnumber`, `rawmaterialname`, `singleprice`, `count`, `buydate`, `suppliernumber`, `totalprice`, `storenumber`, `placenumber`) values ("O136552",'M001', '原材料１', '50.0', '4', '2012-09-30 09:00:00','SP001','200','S001','P001');
+insert  into `t_receive_order`(`number`, `rawmaterialnumber`, `rawmaterialname`, `singleprice`, `count`, `buydate`, `suppliernumber`, `totalprice`, `storenumber`, `placenumber`) values ("O136552",'RM001', '原材料１', '50.0', '4', '2012-09-30 09:00:00','SP001','200','S001','P001');
 
 
 DROP TABLE IF EXISTS `t_raw_inventory`;
@@ -170,7 +170,7 @@ CREATE TABLE `t_raw_inventory` (
 
 /*Data for the table `t_raw_inventory` */
 
-insert  into `t_raw_inventory`(`rawmaterialnumber`, `restcount`) values ("M001",'30');
+insert  into `t_raw_inventory`(`rawmaterialnumber`, `restcount`) values ("RM001",'30');
 
 
 DROP TABLE IF EXISTS `t_supplier`;
@@ -189,3 +189,64 @@ CREATE TABLE `t_supplier` (
 /*Data for the table `t_supplier` */
 
 insert  into `t_supplier`(`number`, `name`, `tel`, `address`, `fax`, `remark`) values ("SP001",'江苏XX公司','15952536125','江苏省苏州市','010-888999','分销');
+
+
+DROP TABLE IF EXISTS `t_finished_material`;
+
+CREATE TABLE `t_finished_material` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `number` varchar(200) DEFAULT NULL unique,
+  `name` varchar(200) DEFAULT NULL,
+  `price` varchar(50) DEFAULT NULL,
+  `danwei` varchar(100) DEFAULT NULL,
+  `catagory` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_finished_material` */
+
+insert  into `t_finished_material`(`number`, `name`, `price`, `danwei`, `catagory`) values ("FM001",'成品１', '500.0', 'danwei1', '类别1');
+
+  
+DROP TABLE IF EXISTS `t_into_storage`;
+
+CREATE TABLE `t_into_storage` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `finishedmaterialnumber` varchar(200) DEFAULT NULL unique,
+  `finishedmaterialname` varchar(200) DEFAULT NULL,
+  `count` int(50) DEFAULT NULL,
+  `producecenter` varchar(50) DEFAULT NULL,
+  `storenumber` varchar(50) DEFAULT NULL,
+  `placenumber` varchar(50) DEFAULT NULL,
+  `remark` varchar(100) DEFAULT NULL,
+  `isinto` varchar(100) DEFAULT "未入库",
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_into_storage` */
+
+insert  into `t_into_storage`(`finishedmaterialnumber`, `finishedmaterialname`, `count`, `producecenter`, `storenumber`, `placenumber`, `remark`) values ("FM001",'成品１', 50, 'china', 'S001', 'P001', 'none');
+
+
+DROP TABLE IF EXISTS `t_sale_order`;
+
+  CREATE TABLE `t_sale_order` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `number` varchar(200) DEFAULT NULL,
+  `finishedmaterialnumber` varchar(200) DEFAULT NULL unique,
+  `finishedmaterialname` varchar(200) DEFAULT NULL,
+  `singleprice` varchar(50) DEFAULT NULL,
+  `count` int(50) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `customernumber` varchar(100) DEFAULT NULL,
+  `totalprice` varchar(20) DEFAULT NULL,
+  `storenumber` varchar(50) DEFAULT NULL,
+  `placenumber` varchar(50) DEFAULT NULL,
+  `reviewstatus` varchar(20) DEFAULT "未审核",
+  `isout` varchar(20) DEFAULT "未出库",
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_sale_order` */
+
+insert  into `t_sale_order`(`number`, `finishedmaterialnumber`, `finishedmaterialname`,`singleprice`, `count`,  `date`, `customernumber`, `totalprice`, `storenumber`, `placenumber`) values ("SO001","FM001",'成品１', '50', 20, '2017-01-09 15:10:20', 'C001', '1000','S001',"P001");
